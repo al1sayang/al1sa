@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love</title>
+    
+    <link rel="icon" type="image/jpeg" href="icon.jpg">
+    <style>
+        
+        /* Pastikan class 'words' punya posisi absolut */
+.words {
+    position: absolute;
+}
+
+/* Pengaturan khusus untuk teks atas dan bawah */
+.top-center { 
+    top: 10%;      /* Ubah persentase ini untuk mengatur jarak dari foto */
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+
+.bottom-center { 
+    bottom: 10%;   /* Ubah persentase ini untuk mengatur jarak dari foto */
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+        /* Mengatur container agar bisa bertumpuk */
+.slide-container {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out; /* Animasi fade-in/out */
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 40px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Class aktif yang memicu animasi */
+.slide-container.active {
+    display: flex;
+    opacity: 1;
+    z-index: 10;
+}
+        /* --- CSS Slide 5 yang Disederhanakan --- */
+#slide5 .song-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 kolom rapi */
+    gap: 30px;
+    justify-items: center;
+    align-items: center;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+#slide5 .song-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+#slide5 .song-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #4a3737;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    background-color: #fff; /* Menghilangkan kotak abu-abu */
+}
+
+#slide5 .song-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#slide5 .song-circle:hover {
+    transform: scale(1.1);
+}
+
+/* Animasi Putar */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.spinning {
+    animation: spin 3s linear infinite;
+}
+        /* Definisi animasi putar */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Class untuk mengaktifkan animasi */
+.spinning {
+    animation: spin 3s linear infinite;
+}
+        /* Styling Grid 8 Lingkaran */
+#slide5 .song-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 kolom */
+    gap: 30px;
+    justify-items: center;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+#slide5 .song-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #4a3737;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#slide5 .song-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#slide5 .song-circle:hover {
+    transform: scale(1.1);
+}
+      /* CSS KHUSUS SLIDE 5 - SONG GRID */
+#slide5 {
+    background-color: #f4efea; /* Menutup slide sebelumnya */
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 50px;
+    z-index: 100;
+}
+
+#slide5 h1 {
+    font-size: 2rem;
+    letter-spacing: 5px;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+.song-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 Kolom sesuai sketsa */
+    grid-template-rows: repeat(2, 1fr);    /* 2 Baris sesuai sketsa */
+    gap: 40px;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.song-item {
+    text-align: center;
+    cursor: pointer;
+}
+
+.cover-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Membuat jadi lingkaran sempurna */
+    border: 3px solid #000;
+    overflow: hidden;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+    background-color: #fff;
+}
+
+.cover-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.song-item p {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.song-item:hover .cover-circle {
+    transform: scale(1.1);
+}  
+    /* Animasi untuk Slide 4 */
+#slide4 .message-box {
+    animation: boxFadeZoom 1.5s ease-out forwards;
+}
+
+@keyframes boxFadeZoom {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}    
+        /* Animasi dasar untuk Teks Slide 2 */
+#slide2 .text-part {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+/* Animasi untuk Frame Foto (Awalnya tidak terlihat) */
+#slide2 .photo-frame {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Delay agar foto muncul satu per satu (Staggered Animation) */
+#slide2 .photo-frame:nth-child(1) { animation-delay: 0.4s; }
+#slide2 .photo-frame:nth-child(2) { animation-delay: 0.5s; }
+#slide2 .photo-frame:nth-child(3) { animation-delay: 0.6s; }
+#slide2 .photo-frame:nth-child(4) { animation-delay: 0.7s; }
+#slide2 .photo-frame:nth-child(5) { animation-delay: 0.8s; }
+#slide2 .photo-frame:nth-child(6) { animation-delay: 0.9s; }
+#slide2 .photo-frame:nth-child(7) { animation-delay: 1.0s; }
+#slide2 .photo-frame:nth-child(8) { animation-delay: 1.1s; }
+#slide2 .photo-frame:nth-child(9) { animation-delay: 1.2s; }
+#slide2 .photo-frame:nth-child(10) { animation-delay: 1.3s; }
+
+/* Efek Interaktif saat foto disentuh kursor */
+#slide2 .photo-frame:hover {
+    transform: scale(1.08) rotate(2deg); /* Membesar dan sedikit miring */
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+        /* Animasi masuk dari bawah ke atas */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Terapkan ke teks dan foto di Slide 1 */
+#slide1 .text-part, #slide1 .image-part {
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
+/* Efek tombol membesar sedikit saat disentuh */
+.btn-nav:hover {
+    transform: scale(1.05);
+    background-color: #4a3737;
+    color: #f4efea;
+    transition: all 0.3s ease;
+}
+        /* Hanya Slide 2 yang akan berubah menjadi bisa di-scroll */
+#slide2.active {
+    display: block !important;    /* Override flex agar bisa scroll */
+    height: auto !important;      /* Tinggi menyesuaikan isi teks */
+    min-height: 100vh;            /* Minimal tetap seukuran layar */
+    padding-top: 80px;            /* Memberi jarak atas agar tidak terpotong */
+    padding-bottom: 80px;         /* Memberi jarak bawah */
+}
+
+/* Mengatur ulang isi slide 2 agar foto dan teks tetap rapi dalam display: block */
+#slide2 .content-wrapper {
+    display: flex;
+    flex-wrap: wrap;              /* Membungkus konten agar rapi */
+    justify-content: center;
+    gap: 40px;
+    align-items: flex-start;      /* Mulai dari atas */
+}
+        /* Styling untuk slide ke-4 agar rapi */
+.message-box {
+    background-color: transparent !important; 
+    border: 2px solid #4a3737 !important;     
+    color: #2e2121 !important; /* Menggunakan cokelat yang JAUH LEBIH TUA agar kontras */
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: none !important;
+}
+
+/* Memastikan judul dan paragraf di dalam box ikut berwarna gelap */
+.message-box h2, .message-box p {
+    color: #2e2121 !important; 
+    font-weight: 500;
+}
+
+.message-box h2 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.message-box p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+        /* Layout Foto Slide 2 */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 150px); /* 3 kolom */
+    gap: 100px; /* Jarak antar foto */
+    justify-content: flex-start; /* Menggeser seluruh grid ke arah kiri (mendekati teks) */
+    margin-top: 20px;
+}
+
+.photo-frame {
+    background: white; /* Warna bingkai */
+    padding: 10px; /* Ketebalan bingkai */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Efek bayangan */
+    width: 150px; /* Ukuran foto diperbesar */
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 80px;  /* Perbesar angka ini jika ingin memberi jarak lebih banyak antara teks dan foto */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+        /* CSS Tambahan untuk Slide 4 dan 5 */
+.message-box {
+    background-color: #2b2b2b; /* Warna gelap sesuai tema */
+    color: #f4efea;
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 800px;
+    text-align: center;
+    border: 1px solid #7a5c5c;
+}
+
+.song-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.song-item {
+    width: 200px;
+    height: 200px;
+    background-color: #938686;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+        /* CSS Diletakkan di sini, di dalam tag <style> */
+        body { margin: 0; background-color: #f4efea; font-family: 'Georgia', serif; color: #4a3737; }
+        .slide-container { display: none; height: 100vh; width: 100vw; align-items: center; justify-content: center; padding: 40px; box-sizing: border-box; }
+        .active { display: flex; }
+
+        /* Layout Umum */
+        .content-wrapper { display: flex; align-items: center; justify-content: center; gap: 60px; width: 100%; max-width: 1200px; }
+        .text-part { flex: 1; text-align: left; }
+        .image-part { flex: 1; text-align: center; }
+        h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 20px; }
+        .btn-nav { padding: 15px 30px; border: 1px solid #4a3737; background: transparent; cursor: pointer; font-family: 'Georgia', serif; font-size: 1.1rem; }
+        .img-style { width: 100%; max-width: 500px; border-radius: 25px; box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+
+        /* CSS KHUSUS HALAMAN 3 (Agar melingkar rapi) */
+        .container-p3 { position: relative; width: 600px; height: 500px; display: flex; justify-content: center; align-items: center; margin: 0 auto; }
+        /* Container untuk memutar kata-kata */
+.container-p3 { 
+    position: relative; 
+    width: 500px; 
+    height: 500px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin: 0 auto;
+    /* Kunci: Membuat container berputar */
+    animation: rotateContainer 15s linear infinite;
+}
+
+/* Animasi putaran 360 derajat */
+@keyframes rotateContainer {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Agar teks-nya tidak ikut terbalik saat container berputar */
+.words { 
+    position: absolute; 
+    font-size: 1.2rem; 
+    color: #4a3737; 
+    font-style: italic;
+    /* Melawan putaran agar teks tetap tegak lurus */
+    animation: counterRotate 15s linear infinite; 
+}
+
+@keyframes counterRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+}
+
+/* Posisi tetap (seperti kode awal Anda) */
+.tl { top: 50px; left: 20px; }
+.tr { top: 50px; right: 20px; }
+.l { top: 240px; left: -20px; }
+.r { top: 240px; right: -20px; }
+.bl { bottom: 50px; left: 40px; }
+.br { bottom: 50px; right: 40px; }
+
+.lucu-img { 
+    width: 250px; 
+    height: 250px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    z-index: 2; 
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1); 
+}
+        .tl { top: 50px; left: 20px; }
+        .tr { top: 50px; right: 20px; }
+        .l { top: 240px; left: -20px; }
+        .r { top: 240px; right: -20px; }
+        .bl { bottom: 50px; left: 40px; }
+        .br { bottom: 50px; right: 40px; }
+        .lucu-img { width: 250px; height: 250px; border-radius: 50%; object-fit: cover; z-index: 2; box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+
+        .fade-text span {
+    opacity: 0;
+    display: inline-block;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Mengatur jeda waktu agar muncul berurutan */
+.fade-text span:nth-child(1) { animation-delay: 0.3s; }
+.fade-text span:nth-child(2) { animation-delay: 0.6s; }
+.fade-text span.name { animation-delay: 0.9s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    </style>
+
+</head>
+<body>
+    <audio id="background-music" loop>
+    <source src="lagu1234.mp3" type="audio/mpeg">
+</audio>
+
+    <section id="slide1" class="slide-container active">
+        <div class="content-wrapper">
+            <div class="text-part">
+                <h1 class="fade-text">
+    <span>HAPPY</span> 
+    <span>BIRTHDAY</span> 
+    <span class="name">Senchu'Gs</span>
+</h1>>
+                <button class="btn-nav" onclick="nextSlide(2)">open me</button>
+            </div>
+            <div class="image-part">
+                <img src="foto1.jpg" class="img-style">
+            </div>
+        </div>
+    </section>
+
+    <section id="slide2" class="slide-container">
+    <div class="content-wrapper">
+        <div class="text-part">
+            <p style="font-size: 1.5rem; font-style: italic;">
+                "Selamat Ulang Tahun Sayang. Today is your day, the day the world got brighter just because you exist. Aku sangat bersyukur karena kamu lahir ke dunia karena kalau engga aku mungkin engga akan merasakan punya seseorang seberharga kamu. Terimakasih sudah mau bertahan sejauh ini walau banyak hal yang ngebuat kamu
+                merasa sedih dan cape. Melihat kamu tumbuh dan melihat gimana kamu selalu mencari cara buat melewati hari-hari yang sulit, itu yang ngebuat aku kagum dan bangga ke kamu. Semoga ditahun ini semua doa doa kamu yang pernah kamu bisikan ke Tuhan bisa satu persatu terkabul, aamiin. I hope you find more reasons to smile, more moments that feel like home,
+                and more love that. Jarak mungkin membatasi fisik kita untuk bertemu, tapi tidak dengan cinta dan kasih sayangku ke kamu. Inget ya sayang, kamu disini engga sendirian kamu punya aku yang akan selalu jadi pendengar paling setia untuk setiap keluh kesah kamu dan orang pertama yang merayakan setiap kebahagiaan kecilmu. Kalau aku boleh minta satu hal sama semesta, aku cuma
+                mau kita terus punya alasan untuk bertahan. Aku sadar waktu itu sangat berharga, tapi sama kamu justru aku pengen waktu berjalan lebih lambat biar kita punya lebih banyak kesempatan untuk menikmati masa kita. Semoga kita selalu menemukan cara untuk melewati setiap musim yang berubah, dan tetap menjadi rumah bagi satu sama lain. I love you today, and forever 'Gs"
+            </p>
+            <button class="btn-nav" onclick="nextSlide(3)">Next</button>
+        </div>
+        
+        <div class="image-part photo-grid">
+            <div class="photo-frame"><img src="foto2.jpg"></div>
+            <div class="photo-frame"><img src="foto3.jpg"></div>
+            <div class="photo-frame"><img src="foto4.jpg"></div>
+            <div class="photo-frame"><img src="foto5.jpg"></div>
+            <div class="photo-frame"><img src="foto6.jpg"></div>
+            <div class="photo-frame"><img src="foto7.jpg"></div>
+            <div class="photo-frame"><img src="foto9.jpg"></div>
+            <div class="photo-frame"><img src="foto10.jpg"></div>
+            <div class="photo-frame"><img src="foto11.jpg"></div>
+            <div class="photo-frame"><img src="foto12.jpg"></div>
+            <div class="photo-frame"><img src="foto13.jpg"></div>
+            <div class="photo-frame"><img src="foto14.jpg"></div>
+        </div>
+    </div>
+</section>
+
+    <section id="slide3" class="slide-container">
+        <div class="container-p3">
+    <img src="foto8.jpg" class="lucu-img">
+    
+    <div class="words top-center">kind</div> 
+    <div class="words bottom-center">lovely</div>
+
+    <div class="words tl">careless</div>
+    <div class="words tr">grumpy</div>
+    <div class="words l">warmhearted</div>
+    <div class="words r">calm</div>
+    <div class="words bl">funny</div>
+    <div class="words br">sweet</div>
+</div>
+        <button class="btn-nav" onclick="nextSlide(4)" style="margin-top: 50px;">Next</button>
+    </section>
+
+    <section id="slide4" class="slide-container">
+    <div class="message-box">
+        <h2>Happy Birthday, Senchu'Gs</h2>
+        <p>Aku berharap hari ini memberikan kebahagiaan yang sama seperti yang kamu berikan ke orang-orang di sekitarmu. Terima kasih sudah menjadi orang yang membuat hidupku terasa bewarna, lebih ringan, dan bermakna. Tetap jadi diri sendiri sayang, meskipun aku kadang harus menebak kamu lagi jadi versi yang mana (bunglon)</p>
+        <p style="text-align: right; font-style: italic;">Love, alisa</p>
+        <button class="btn-nav" onclick="nextSlide(5)">Next Slide</button>
+    </div>
+</section>
+
+<section id="slide5" class="slide-container">
+    <div style="width: 100%; text-align: center;">
+        <h1 style="color: #4a3737;">SONGS THAT REMIND ME OF YOU</h1>
+        
+        <div class="song-grid">
+            <div class="song-item" onclick="playMusic('audio1')">
+                <div class="song-circle"><img src="cover1.jpg"></div>
+                <audio id="audio1" src="lagu1.mp3"></audio>
+            </div>
+            <div class="song-item" onclick="playMusic('audio3')">
+                <div class="song-circle"><img src="cover3.jpg"></div>
+                <audio id="audio3" src="lagu3.mp3"></audio>
+            </div>
+            <div class="song-item" onclick="playMusic('audio6')">
+                <div class="song-circle"><img src="cover6.png"></div>
+                <audio id="audio6" src="lagu6.mp3"></audio>
+            </div>
+            <div class="song-item" onclick="playMusic('audio7')">
+                <div class="song-circle"><img src="cover7.jpg"></div>
+                <audio id="audio7" src="lagu7.mp3"></audio>
+            </div>
+
+            <div class="song-item" onclick="playMusic('audio2')">
+                <div class="song-circle"><img src="cover2.jpg"></div> <audio id="audio2" src="lagu2.mp3"></audio>
+            </div>
+            <div class="song-item" onclick="playMusic('audio4')">
+                <div class="song-circle"><img src="cover4.png"></div> <audio id="audio4" src="lagu4.mp3"></audio>
+            </div>
+            <div class="song-item" onclick="playMusic('audio5')">
+                <div class="song-circle"><img src="cover5.png"></div> <audio id="audio5" src="lagu5.mp3"></audio> </div>
+            <div class="song-item" onclick="playMusic('audio8')">
+                <div class="song-circle"><img src="cover8.jpg"></div>
+                <audio id="audio8" src="lagu8.mp3"></audio>
+            </div>
+        </div>
+
+        <button class="btn-nav" onclick="nextSlide(1)">Restart Our Journey</button>
+    </div>
+</section>
+
+
+    <script>
+        function nextSlide(n) {
+    // 1. Logika Musik
+    const music = document.getElementById("background-music");
+    if (n >= 1 && n <= 4) {
+        music.play().catch(e => console.log("Menunggu interaksi user"));
+    } else if (n === 5) {
+        music.pause();
+        music.currentTime = 0; 
+    }
+
+    // 2. Logika Navigasi Slide
+    const currentActive = document.querySelector('.slide-container.active');
+    const nextSlideElement = document.getElementById('slide' + n);
+
+    if (currentActive && nextSlideElement) {
+        currentActive.classList.remove('active');
+        
+        setTimeout(() => {
+            currentActive.style.display = 'none';
+            // Cek jika slide 2, gunakan display: block, jika bukan gunakan flex
+            nextSlideElement.style.display = (n === 2) ? 'block' : 'flex';
+            
+            setTimeout(() => {
+                nextSlideElement.classList.add('active');
+            }, 50);
+        }, 800);
+    }
+}
+function playMusic(id) {
+    const audio = document.getElementById(id);
+    
+    // 1. Matikan semua audio dan hapus class 'spinning' dari semua lingkaran
+    document.querySelectorAll('audio').forEach(a => {
+        a.pause();
+        a.currentTime = 0;
+    });
+    document.querySelectorAll('.song-circle').forEach(c => {
+        c.classList.remove('spinning');
+    });
+
+    // 2. Mainkan audio yang dipilih
+    if (audio) {
+        audio.play().then(() => {
+            // Temukan pembungkusnya (song-item), lalu cari lingkaran di dalamnya
+            const parentItem = audio.closest('.song-item');
+            const currentCover = parentItem.querySelector('.song-circle');
+            if (currentCover) {
+                currentCover.classList.add('spinning');
+            }
+        }).catch(err => {
+            console.log("Audio diblokir browser, klik sekali lagi.");
+        });
+    }
+}
+        
+    </script>
+    
+</body>
+</html>
